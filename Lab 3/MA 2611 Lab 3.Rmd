@@ -1,0 +1,114 @@
+---
+title: "MA 2611 Lab 3"
+author: "Xin Yu Wu"
+date: "2024-09-11"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+if(!require("ggplot2")){
+install.packages("ggplot2")
+require ("ggplot2")
+}
+  library(ggplot2)
+
+?rbinom
+```
+
+**Problem L.10**
+
+```{r}
+#a)
+ggplot(data = plovers, aes(x=Eggs, y=Wingspan, fill = Eggs)) +
+  geom_boxplot(fill = "chocolate4", color = "mintcream") +
+  labs(title=" Boxplot of Wingspan of Plovers", 
+       x ="Eggs",
+       y = "Wingspan")
+
+```
+
+#Discrete Random Variable
+
+```{r}
+#b)
+ggplot(data= plovers,aes(x= Wingspan)) +
+geom_histogram(binwidth= .9, alpha = 0.5, fill="plum4", colour="thistle1") +
+labs(title="Histogram of Wingspans of Plovers",x="Wingspan",y="Frequency")
+```
+
+#c)
+
+**Problem L.11**
+
+```{r}
+#a) 
+coin.1000 <-sample(x=c(0,1),size=1000,replace=TRUE,prob=c(0.8,0.2))
+coin.data <-data.frame(Values=table(coin),Names=as.factor(c("0","1")))
+
+ggplot(coin.data,aes(x=Names,y=Values.Freq)) +
+geom_col(fill=c("papayawhip","mistyrose"),
+colour="whitesmoke") +
+labs(title="Outcomes of Unfair 1000 Coin Flips",x="Outcome",y="Frequency")
+
+```
+
+**Problem L.11 and L.12**
+
+```{r}
+#a) 
+
+#Exact probability using sampled data:
+
+mean(X_bin == 5)
+mean(X_bin >= 4 & X_bin < 7)
+
+
+#Exact probability using binom distribution:
+
+sum(X_bin == 5)/20000
+
+#The probability P is 4 <= X < 7
+prob4 <- sum(X_bin == 4)/20000 
+prob5 <- sum(X_bin == 5)/20000
+prob6 <- sum(X_bin == 6)/20000 
+probCombine <- prob4 + prob5 + prob6
+
+print(probCombine)
+```
+
+#a) The estimated probability using sampled data is: P(X=5) = 0.21685 P(4 \<= X \< 7) = 0.6079. The estimated probability using binomial distribution is: P(X=5) = 0.21685 P(4 \<= X \< 7) = 0.6079. In this case, the estimated values are the same as the exact probabilities.
+
+```{r}
+#b)
+expected_val = mean(X_bin)
+standard_dev = sd(X_bin)
+print(expected_val)
+print(standard_dev)
+
+Exact_expected_val = 8 * 0.5
+Exact_standard_deviation <- sqrt(8 * 0.5 * (1 - 0.5))
+print(Exact_expected_val)
+print(Exact_standard_deviation)
+
+```
+
+#b) The expected value for X using the randomly sampled data is 4.0042. The standard deviation for X using the randomly sampled data is 1.410738. The exact expected value for X is 4.0. The exact standard deviation for X is 1.414214. The estimated and exact values are very close, but not exact, with a hundredth decimal difference.
+
+```{r}
+#c)
+X_bin <- rbinom(n = 20000, size = 8, prob = 0.5)
+X.data <-data.frame(Values=table(X_bin),Names=as.factor(c("0","1","2","3", "4","5","6","7","8")))
+X.data
+
+ggplot(X.data,aes(x=Names,y=Values.Freq)) +
+geom_col(fill=c("sienna","rosybrown2","cornsilk2","tomato4","darkolivegreen","plum4","steelblue","indianred","sandybrown"),
+colour="black") +
+labs(title="Bar Graph of X ~ Binomial(8, 0.5) Values",x="X Values",y="Counts")                   
+```

@@ -1,0 +1,98 @@
+---
+title: "MA 2611 Lab 1"
+author: "Xin Yu Wu"
+date: "2024-08-28"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r}
+library(knitr)
+```
+
+`{r setup, include=F knitr::opts_chunk$set(echo = TRUE)`
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+**PROBLEM L.2**
+
+```{r}
+#a) & b)
+points<- c(2413, 20310, 12637, 2753, 14505, 14440, 2379, 447, 345, 4784, 13803, 12668, 1235, 1257, 1671, 4041, 4145,
+535, 5270, 3360, 3489, 1979, 2302, 807, 1772, 12807, 5427, 13147, 6288, 1803, 13167, 5343, 6684, 3508, 1549,
+4975, 11249, 3213, 811, 3560, 7244, 6643, 8571, 13534, 4395, 5729, 14417, 4863, 1951, 13809)
+
+summary(points)
+
+#c)
+sd(points)
+
+#d)
+sorted_points<-sort(points)
+print(sorted_points)
+
+rank(sorted_points)
+
+
+
+```
+
+a.  The height of the lowest point in the US is 345. The highest point in the US is 20310.
+
+b.  The average height of the highest points in the US is 6161. The median is 4590.
+
+c.  The height of the highest points in the US vary by 5085.635 feet.
+
+d.  Massachusetts rank 20th place among US states for the highest point in the country.
+
+**Problem L.3**
+
+```{r}
+#a)
+x <- c(seq(6, 12), rep(5.3, 3), -3, rep(c(1.2, 3.4, 5.6), 2))
+print(x)
+
+#b)
+x<-rev(x)
+print(x)
+
+#c)
+y<-c(x[1],median(x),x[length(x)])
+print(y)
+
+```
+
+**Problem L.4**
+
+```{r}
+
+# Data : People I know 
+
+# Numerical data : Favorite number & Ages
+
+# Categorical Data : Sex
+
+daily_people<-data.frame(names=c("Grace", "Irene", "Carly", "Amanda", "Lyla", "Ana", "Pubert", "Nathaniel", "Sarah", "Julia"),favorite_Number = c(24,10,4,2,42,49,72,4,7,100), age = c(19,19,18,17,19,19,20,45,44,15), sex = (c("f", "f", "f", "f", "f", "f", "f", "m", "m", "f")))
+
+print(daily_people)
+```
