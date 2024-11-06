@@ -1,0 +1,48 @@
+---
+title: "MA 2611 Lab 6"
+author: "Xin Yu Wu"
+date: "2024-10-09"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+**Problem L.22 and L.23**
+```{r}
+
+bagsWeights <- c(456.1, 454.9, 463.4, 454.4, 439.9, 439.4, 433.6, 454.4, 441.2, 451.7, 451.1, 454.1, 449.7, 450.1, 449.6, 449.8, 448.2, 451.5, 447.9, 449.2, 455.1, 454.5, 459.2, 453.7, 456.5)
+
+confidence_interval <- t.test(bagsWeights, conf.level = 0.95)
+
+hypothesis_test <- t.test(bagsWeights, mu = 454, alternative = "two.sided", conf.level = 0.95)
+print(hypothesis_test)
+```
+
+
+With a 95% confidence level,448.05 oz and 453.5 oz, it can supported that the mean weight of bags being packaged is within the expected weight, 454 oz. 
+
+
+**Problem L.23**
+```{r}
+data(faithful)
+
+t.test(faithful$eruptions, mu = 5, alternative = "less")
+
+```
+Since the p-value is less than 0.05, we have sufficient evidence to reject the null hypothesis: the mean eruption is 5 minutes.The evidence is in the disgruntled visitor's favor. 
+
+
+**Problem L.24**
+```{r}
+
+prop.test(42, 568, p = 1/20, alternative = "greater")
+
+```
+Since the p-value is 0.005834 is lower than the significance level, 0.01, we reject the null hypothesis. We have sufficient evidence to support that there is potential bias towards ”lucky number” 7. This is different from last lab as the confidence level was not completely greater than 0.05, leading to an indefinite conclusion. 
+
