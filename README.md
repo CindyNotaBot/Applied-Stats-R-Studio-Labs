@@ -1,0 +1,1 @@
+This collection of projects was developed using R and MATLAB. The tasks were divided and executed to address a variety of statistical problems, utilizing the strengths of both programming languages for efficient problem-solving and analysis.
